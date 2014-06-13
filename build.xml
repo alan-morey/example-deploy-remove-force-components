@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Force.com Metadata Backup" basedir="." xmlns:sf="antlib:com.salesforce">
+  <taskdef uri="antlib:com.salesforce" resource="com/salesforce/antlib.xml" classpath="lib/ant-salesforce.jar"/>
+
+  <property file="build.properties"/>
+
+  <target name="deploy-initial-package">
+    <sf:deploy
+      deployRoot="initial-package"
+      username="${sf.username}"
+      password="${sf.password}"
+      serverurl="${sf.serverurl}"
+      pollWaitMillis="${sf.pollWaitMillis}"
+      maxPoll="${sf.maxPoll}"
+    />
+  </target>
+
+  
+  <target name="deploy">
+    <sf:deploy
+      deployRoot="add-update-delete-package"
+      username="${sf.username}"
+      password="${sf.password}"
+      serverurl="${sf.serverurl}"
+      pollWaitMillis="${sf.pollWaitMillis}"
+      maxPoll="${sf.maxPoll}"
+    />
+
+  </target>
+</project>
